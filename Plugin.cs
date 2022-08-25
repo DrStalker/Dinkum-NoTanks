@@ -87,33 +87,3 @@ internal class NepNoTankPatch
 
 }
 
-
-    /*
-    // For doing nothing other than dumping the IL Code to the console (with the proper bepinex logging options)
-    [HarmonyTranspiler]
-    [HarmonyPatch(typeof(SprinklerTile), nameof(SprinklerTile.waterTiles))]
-    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-    {
-        foreach (var ins in instructions) yield return ins;
-    }
-    */
-
-    /*
-    // Does not work, because the IL Code in dnspy and the actual IL Code are very different.
-    [HarmonyTranspiler]
-    [HarmonyPatch(typeof(SprinklerTile), nameof(SprinklerTile.waterTiles))]
-    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-    {
-        
-        return new CodeMatcher(instructions)
-            .MatchForward(false,
-                new CodeMatch(OpCodes.Ldfld),
-                new CodeMatch(OpCodes.Brtrue),
-                new CodeMatch(OpCodes.Ldc_I4_0))
-            .ThrowIfNotMatch()
-            .Advance(2)
-            .SetInstruction(new CodeInstruction(OpCodes.Ldc_I4_1))
-            .InstructionEnumeration();
-            
-    }
-    */
